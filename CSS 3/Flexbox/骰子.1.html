@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>骰子1</title>
+    <style>
+        body{
+            width: 880px;
+        }
+        [class$='face']{
+            width: 250px;
+            height: 250px;
+            background-color: bisque;
+            display: -webkit-flex;
+            display: flex;
+            border-radius: 12px;
+            margin: 15px;
+            float: left;
+        }
+        .pic{
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            margin: 9px;
+            background-color: rosybrown;
+        }
+        .one2-face{
+            justify-content: center;
+        }
+        .one3-face{
+            justify-content: flex-end;
+        }
+        .one4-face{
+            flex-direction: column;
+            justify-content: center;
+        }
+        .one5-face{
+            justify-content: center;
+            align-items: center;
+        }
+        .one6-face{
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .one7-face{
+            flex-direction: column-reverse;
+        }
+        .one8-face{
+            align-items: center;
+            flex-direction: column-reverse;
+        }
+        .one9-face{
+            align-items: flex-end;
+            flex-direction: column-reverse;
+        }
+    </style>
+</head>
+<body>
+    <div class="one1-face">
+        <div class="pic"></div>
+    </div>
+    <div class="one2-face">
+        <div class="pic"></div>
+    </div>
+    <div class="one3-face">
+        <div class="pic"></div>
+    </div>
+    <div class="one4-face">
+        <div class="pic"></div>
+    </div>
+    <div class="one5-face">
+        <div class="pic"></div>
+    </div>
+    <div class="one6-face">
+        <div class="pic"></div>
+    </div>
+    <div class="one7-face">
+        <div class="pic"></div>
+    </div>
+    <div class="one8-face">
+        <div class="pic"></div>
+    </div>
+    <div class="one9-face">
+        <div class="pic"></div>
+    </div>
+</body>
+</html>

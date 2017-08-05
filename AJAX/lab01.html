@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax01</title>
+</head>
+<body>
+    <input type="text" name="u" id="txt">
+    <button class="btn">提交</button>
+    <h3 class="splice"></h3>
+    <script>
+        var btn = document.querySelector('.btn');
+        var splice = document.querySelector('.splice');
+        var issuccess = true;
+        btn.onclick = function(){
+            var txt = document.getElementById('txt');
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST','lab01.php');
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            xhr.onload = function(e){
+                if(this.status>=200 && this.status<300 || this.status === 304){
+                    if(this.responseText === 'success'){
+                        splice.innerHTML = '成功';
+                        issuccess = true;
+                    }else{
+                        splice.innerHTML = '失败';
+                        issuccess = false;
+                    }
+                }
+            }
+            xhr.send('t='+txt.value);
+        };
+
+    </script>
+</body>
+</html>

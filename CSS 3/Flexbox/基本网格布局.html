@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基本网格布局</title>
+    <style>
+        .Grid {
+            display: -webkit-flex;
+            display: flex;
+            margin: 20px 0;
+        }
+
+        .Grid-cell {
+            background-color: tan;
+            margin: 0 10px;
+            flex: 1;
+            text-align: center;
+        }
+        .u-1of4{
+            flex: 0 0 25%;
+        }
+        .u-1of3{
+            flex: 0 0 33.333333%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Grid">
+        <div class="Grid-cell u-1of4">...</div>
+        <div class="Grid-cell">...</div>
+        <div class="Grid-cell u-1of3">...</div>
+    </div>
+</body>
+
+</html>
