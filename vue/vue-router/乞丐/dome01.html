@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dome01</title>
+    <link rel="stylesheet" href="http://bootswatch.com/united/bootstrap.css"/>
+</head>
+<body>
+    <div id="app">
+        <div class="row">
+            <div class="col-xs-offset-2 col-xs-8">
+                <div class="page-header">
+                    <h2>Router Dome - o1</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 col-xs-offset-2">
+                <div class="list-group">
+                    <router-link class="list-group-item" to="/home">Home</router-link>
+                    <router-link class="list-group-item" to="/about">About</router-link>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="panel">
+                    <div class="panel-body">
+                        <router-view></router-view>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <template id="home">
+        <div>
+            <h1>Home</h1>
+            <p>{{msg}}</p>
+        </div>
+    </template>
+    <template id="about">
+        <div>
+            <h1>About</h1>
+            <p>This is the tutorial about vue-router.</p>
+        </div>
+    </template>
+    <script src="vue.js"></script>
+    <script src="vue-router.js"></script>
+    <script>
+        var home = {
+            template:'#home',
+            data(){
+                return {
+                    msg:'hello router!!'
+                }
+            }
+        }
+        var about = {
+            template:'#about'
+        }
+        var routes = [
+            {path:'/home',component:home},
+            {path:'/about',component:about}
+        ]
+        var router = new VueRouter({
+            routes
+        })
+        var app = new Vue({
+            router
+        }).$mount('#app')
+    </script>
+</body>
+</html>
