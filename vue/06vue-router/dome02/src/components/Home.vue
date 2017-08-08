@@ -3,10 +3,10 @@
         <h1>Home</h1>
         <p>{{msg}}</p>
         <ul class="nav nav-tabs">
-            <li>
+            <li :class="currentPath === '/home/news'?'active':''">
                 <router-link to="/home/news">News</router-link>
             </li>
-            <li>
+            <li :class="currentPath === '/home/message'?'active':''">
                 <router-link to="/home/message">Messages</router-link>
             </li>
         </ul>
@@ -17,7 +17,16 @@
 export default {
     data() {
         return {
-            msg: 'Hello, Vue router !!!'
+            msg: 'Hello, Vue router !!!',
+            currentPath: ''
+        }
+    },
+    watch:{
+        $route:'cData'
+    },
+    methods:{
+        cData(opt){
+            this.currentPath = opt.path;
         }
     }
 }

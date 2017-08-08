@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-xs-offset-2 col-xs-8">
         <p>当前路径：{{$route.path}}</p>
         <p>当前参数：{{ JSON.stringify($route.params)}}</p>
@@ -30,7 +30,7 @@
         <p>路由查询参数：{{JSON.stringify($route.query)}}</p>
         <p>路由匹配项：{{ JSON.stringify($route.matched)}}</p>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
