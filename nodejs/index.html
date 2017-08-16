@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>node.js</title>
+</head>
+
+<body>
+    <button id="but">发送</button>
+    <script src="./public/axios.min.js"></script>
+    <script>
+        var person = {
+            name: 'afei',
+            age: 25
+        }
+        var but = document.getElementById('but');
+        but.onclick = function () {
+            axios.post('http://127.0.0.1:3000/saveJSON', person).then(function (response) {
+                alert("Data: " + response.data + '\nStatus: ' + response.status)
+            })
+        }
+    </script>
+</body>
+
+</html>
