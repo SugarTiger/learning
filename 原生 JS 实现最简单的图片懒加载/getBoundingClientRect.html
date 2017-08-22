@@ -16,8 +16,8 @@
 </head>
 
 <body>
-    <h1>传统方法</h1>
-    <p>document.documentElement.clientHeight + document.body.scrollTop > element.offsetTop</p>
+    <h1>getBoundingClientRect</h1>
+    <p>getBoundingClientRect</p>
     <div class="container">
         <div class="img-area">
             <img data-src="./images/img1.png" alt="loading" class="my-photo">
@@ -61,10 +61,10 @@
         function layerimg(list) {
             if (list.length === 0) return;
             let dh = document.documentElement.clientHeight;
-            let st = document.body.scrollTop;
             for(let i=0;i<list.length;i++){
                 let img = list[i];
-                if ((dh + st) > img.offsetTop) {
+                const bound = img.getBoundingClientRect();
+                if (dh >= bound.top) {
                     img.src = img.dataset['src'];
                     let index = list.indexOf(img);
                     list.splice(i, 1);
