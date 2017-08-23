@@ -11,12 +11,6 @@
 </template>
 <script type="application/ecmascript">
     export default {
-        name:'',
-        data(){
-            return {
-                msg:''
-            }
-        }
     }
 </script>
 <style scoped lang='scss' rel="stylesheet/scss" type="text/css">

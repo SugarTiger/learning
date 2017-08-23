@@ -11,7 +11,8 @@
                     <span class="md-title title">{{title}}</span>
                 </div>
                 <div class="right">
-                    <a v-on:click="logout" class="md-default" v-show="token">logout</a>
+                    <md-button class="md-raised  md-dense" v-on:click="logout" v-show="token">logout</md-button>
+                    <!-- <a v-on:click="logout" class="md-default" v-show="token">logout</a> -->
                 </div>
             </div>
         </md-toolbar>
@@ -23,10 +24,6 @@ import * as types from './store/types'
 import { mapState } from 'vuex'
 export default {
     name: 'app',
-    data() {
-        return {
-        }
-    },
     computed: mapState({
         title: state => state.title,
         token: state => state.token
@@ -43,49 +40,51 @@ export default {
 </script>
 <style lang="scss">
 @import "../node_modules/vue-material/dist/vue-material.css";
-    @import "assets/css.css";
-    @import "assets/icon.css";
+@import "assets/css.css";
+@import "assets/icon.css";
 
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-    }
+#app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+}
 
-    .container {
-        width: 1000px;
-        margin: 0 auto;
-    }
-    .left {
-        float: left;
-        text-align: left;
-    }
-    .right{
-        float: right;
-    }
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
 
-    .md-toolbar .title {
-        vertical-align: text-top;
-        margin-left: 5px;
-    }
+.left {
+    float: left;
+    text-align: left;
+}
 
-    h1, h2 {
-        font-weight: normal;
-    }
+.right {
+    float: right;
+}
+.md-toolbar .title {
+    vertical-align: text-top;
+    margin-left: 5px;
+}
 
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
+h1,
+h2 {
+    font-weight: normal;
+}
 
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
+ul {
+    list-style-type: none;
+    padding: 0;
+}
 
-    a {
-        color: #42b983;
-    }
+li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+a {
+    color: #42b983;
+}
 </style>
