@@ -1,5 +1,5 @@
 {
-  "name": "webpack-vue-vueRouter",
+  "name": "webpack-vue-axios",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,9 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.16.2",
+    "iview": "^2.2.0",
     "less": "^2.7.2",
     "vue": "^2.2.4",
-    "vue-resource": "^1.2.1",
     "vuex": "^2.2.1"
   },
   "devDependencies": {

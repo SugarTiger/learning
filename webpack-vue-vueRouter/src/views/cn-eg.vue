@@ -4,8 +4,9 @@
             英汉互译
         </div>
         <div class="controller">
-            <input type="text" class="input-text" placeholder="输入英文/汉字" v-model='text'>
-            <div class="buttom" @click='goApi'>立即翻译</div>
+            <!-- <input type="text" class="input-text" placeholder="输入英文/汉字" v-model='text'> -->
+            <Input v-model="text" placeholder="输入英文/汉字" style="width: 80%;margin-top:20px"></Input>
+            <Button type="success" @click='goApi' class="button">立即翻译</Button>
             <div class="show-content">
                 <div v-for='(item,index) in content' :key='index'>
                     {{item}}<br>
@@ -33,66 +34,29 @@ export default {
     methods:{
         goApi(){
             let that = this;
-            this.$http.post(this.apiUrl,{
-                showapi_appid:this.showapi_appid,
-                showapi_sign:this.showapi_sign,
+            this.axios.post(this.apiUrl,
+            {
+                showapi_appid: this.showapi_appid,
+                showapi_sign: this.showapi_sign,
                 q:this.text
-            },{
-                emulateJSON:true
-            }).then(res=>{
-                that.content = res.body.showapi_res_body.basic.explains
-            },error=>{
-                console.log(error)
-            })
+            }).then(res => {
+                that.content = res.data.showapi_res_body.basic.explains
+            }).catch(function(error) {
+                console.log(error);
+            });
         }
     }
 }
 </script>
 <style lang='less'>
-    .input-text{
-        -moz-appearance: none;
-        appearance: none;
-        background-color: #fff;
-        background-image: none;
-        border-radius: 4px;
-        border: 1px solid #bfcbd9;
-        box-sizing: border-box;
-        color: #1f2d3d;
-        display: block;
-        font-size: 12px;
-        height: 26px;
-        line-height: 1;
-        outline: none;
-        padding: 3px 10px;
-        transition: border-color .2s cubic-bezier(.645,.045,.355,1);
-        width: 80%;
-        margin:20px auto;
-    }
     .controller{
         text-align:center;
     }
     .button{
-        display:inline-block;
+        display:block;
         line-height: 1;
         white-space: nowrap;
         cursor: pointer;
-        background: #fff;
-        border: 1px solid #bfcbd9;
-        color: #1f2d3d;
-        -webkit-appearance: none;
-        color: #fff;
-        background-color: #20a0ff;
-        border-color: #20a0ff;
-        text-align: center;
-        box-sizing: border-box;
-        outline: none;
-        margin: 0 auto;
-        -moz-user-select: none;
-        -webkit-user-select: none;
-        -ms-user-select: none;
-        padding: 5px 15px;
-        font-size: 12px;
-        border-radius: 4px;
     }
     .show-content{
         margin:20px;

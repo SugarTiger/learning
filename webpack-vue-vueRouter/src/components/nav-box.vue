@@ -16,10 +16,10 @@
             <i class='cn-eg'></i>翻译
         </router-link>
         <router-link class="item" to="/">
-            <i class='other'></i>敬请期待
+            <Icon type="plus-round" size='38'></Icon>敬请期待
         </router-link>
         <router-link class="item" to="/">
-            <i class='other'></i>敬请期待
+            <Icon type="plus-round" size='38'></Icon>敬请期待
         </router-link>
     </div>
 </template>

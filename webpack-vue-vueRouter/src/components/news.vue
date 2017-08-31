@@ -14,11 +14,15 @@ export default {
     name: 'news',
     mounted() {
         let that = this;
-        this.$http.post(this.apiUrl, { showapi_appid: this.showapi_appid, showapi_sign: this.showapi_sign }, { emulateJSON: true }).then(res => {
-            that.data = res.data.showapi_res_body.pagebean.contentlist.splice(1, 5)
-        }, function(error) {
-
-        })
+        this.axios.post(this.apiUrl,
+            {
+                showapi_appid: this.showapi_appid,
+                showapi_sign: this.showapi_sign
+            }).then(res => {
+                that.data = res.data.showapi_res_body.pagebean.contentlist.splice(1, 5)
+            }).catch(function(error) {
+                console.log(error);
+            });
     },
     data() {
         return {

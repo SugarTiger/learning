@@ -29,7 +29,7 @@ export default {
     margin-bottom: 40px;
     .home-title{
       height:30px;
-      background:#00a6c6;
+      background:#2D8CF0;
       color:#fff;
       line-height:30px;
       text-align: center;

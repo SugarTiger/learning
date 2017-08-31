@@ -14,11 +14,16 @@ export default {
     name: 'joke',
     mounted() {
         let that = this;
-        this.$http.post(this.apiUrl, { showapi_appid:this.showapi_appid,showapi_sign:this.showapi_sign },{emulateJSON:true}).then(res=>{
-            that.data = res.body.showapi_res_body;
-        },err=>{
-            console.log(err)
-        })
+        this.axios.post(this.apiUrl,
+            {
+                showapi_appid: this.showapi_appid,
+                showapi_sign: this.showapi_sign
+            }).then(res => {
+                console.log(res)
+                that.data = res.data.showapi_res_body;
+            }).catch(err => {
+                console.log(err)
+            })
     },
     created() {
         //用vuex设置状态，改变class;
@@ -35,27 +40,27 @@ export default {
 }
 </script>
 <style lang='less'>
-    .content{
-            margin: 0;
-            padding:40px 0;
-            position: relative;
-            font-size:14px;
-            .title{
-                text-align:center;
-                 position: fixed;
-                 top:0;
-                 width:100%;
-                color: #fff;
-                font-size: 16px;
-                background:#00a6c6;
-                text-align: center;
-                line-height: 40px;
-                font-family: cursive;
-            }
-            .content-item{
-                padding:10px 0;
-                margin:0 10px;
-                border-bottom:1px solid #cdcdcd
-            }
+.content {
+    margin: 0;
+    padding: 40px 0;
+    position: relative;
+    font-size: 14px;
+    .title {
+        text-align: center;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        color: #fff;
+        font-size: 16px;
+        background: #00a6c6;
+        text-align: center;
+        line-height: 40px;
+        font-family: cursive;
     }
+    .content-item {
+        padding: 10px 0;
+        margin: 0 10px;
+        border-bottom: 1px solid #cdcdcd
+    }
+}
 </style>
