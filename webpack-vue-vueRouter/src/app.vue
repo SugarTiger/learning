@@ -1,17 +1,23 @@
 <template>
     <div id="app">
         <router-view></router-view>
-        <footer-tab></footer-tab>
+        <footerTab></footerTab>
     </div>
 </template>
+
 <script>
-import FooterTab from './components/footer.vue';
+import footerTab from './components/footer.vue';
 import store from './vuex/store';
 export default {
     name: 'app',
     store,
+    data() {
+        return {
+            msg: 'Welcome to Your Vue.js App'
+        }
+    },
     components: {
-        FooterTab
+        footerTab
     }
 }
 </script>
