@@ -2,10 +2,12 @@
 <template>
     <div class='content'>
         <div class='title'>历史上的今天</div>
-        <div class='content-item' v-for='(item,index) in data' :key='index'>
-            {{item.title}}
+        <Card class="content-item" v-for='(item,index) in data' :key='index'>
+            <p slot="title">
+                {{item.title}}
+            </p>
             <img class='item-img' :src='item.img'>
-        </div>
+        </Card>
     </div>
 </template>
 <script>
@@ -39,11 +41,7 @@ export default {
 <style lang='less'>
 .item-img {
     width: 100%;
-    height: 150px;
     margin: 0 auto;
 }
 
-.content-item {
-    line-height: 30px;
-}
 </style>

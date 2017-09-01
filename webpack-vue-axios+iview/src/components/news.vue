@@ -1,12 +1,14 @@
 <template>
     <div class="news">
-        <div class="news-item" v-for='(item,index) in data' :key='index'>
-            <a :href="item.link" class="news-title">{{item.title}}</a>
+        <Card class="news-item" v-for='(item,index) in data' :key='index'>
+            <p slot="title">
+                {{item.title}}
+            </p>
             <a :href="item.link">
                 <img v-if='item.imageurls[0]' :src="item.imageurls[0]?item.imageurls[0].url:''" alt="新闻图片" class='news-img'>
             </a>
-            <div class='news-time'>{{item.pubDate}}</div>
-        </div>
+            <p class='date'>{{item.pubDate}}</p>
+        </Card>
     </div>
 </template>
 <script>
@@ -39,22 +41,19 @@ export default {
     padding: 10px 20px;
     display: block;
     .news-item {
-        padding: 10px 0;
-        border-bottom: 1px solid #ccc;
-        .news-title {
-            font-size: 16px;
+        width: 100%;
+        margin: 20px 0;
+        a{
             display: inline-block;
-            color: #222;
-            text-decoration: none;
-        }
-        .news-img {
             width: 100%;
-            margin: 5px 0;
-            height: 100px;
+            text-align: center;
+            img{
+                width: 100%;
+                display:inline-block;
+            }
         }
-        .news-time {
-            font-size: 14px;
-            color: #999;
+        .date{
+            text-align: right;
         }
     }
 }

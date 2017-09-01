@@ -1,11 +1,11 @@
 <template>
     <div class="content">
         <div class="title">
+            <Icon type="ios-arrow-back"></Icon>
             英汉互译
         </div>
         <div class="controller">
-            <!-- <input type="text" class="input-text" placeholder="输入英文/汉字" v-model='text'> -->
-            <Input v-model="text" placeholder="输入英文/汉字" style="width: 80%;margin-top:20px"></Input>
+            <Input class='input-text' v-model="text" placeholder="输入英文/汉字" ></Input>
             <Button type="success" @click='goApi' class="button">立即翻译</Button>
             <div class="show-content">
                 <div v-for='(item,index) in content' :key='index'>
@@ -28,39 +28,43 @@ export default {
             content: ''
         }
     },
-    created(){
+    created() {
         this.$store.dispatch("inOther");
     },
-    methods:{
-        goApi(){
+    methods: {
+        goApi() {
             let that = this;
             this.axios.post(this.apiUrl,
-            {
-                showapi_appid: this.showapi_appid,
-                showapi_sign: this.showapi_sign,
-                q:this.text
-            }).then(res => {
-                that.content = res.data.showapi_res_body.basic.explains
-            }).catch(function(error) {
-                console.log(error);
-            });
+                {
+                    showapi_appid: this.showapi_appid,
+                    showapi_sign: this.showapi_sign,
+                    q: this.text
+                }).then(res => {
+                    that.content = res.data.showapi_res_body.basic.explains
+                }).catch(function(error) {
+                    console.log(error);
+                });
         }
     }
 }
 </script>
 <style lang='less'>
-    .controller{
-        text-align:center;
+.show-content {
+    margin: 20px;
+    color: #FF4949;
+    font-size: 12px;
+}
+
+.controller {
+    .input-text {
+        display: block;
+        width: 80%;
+        margin: 20px auto 0 auto;
     }
-    .button{
-        display:block;
-        line-height: 1;
-        white-space: nowrap;
+    .button {
+        display: block;
         cursor: pointer;
+        margin: 10px auto;
     }
-    .show-content{
-        margin:20px;
-        color:#FF4949;
-        font-size:12px;
-    }
+}
 </style>

@@ -1,16 +1,18 @@
 <template>
-    <Row class='nav-box'>
-        <Col span="12">
-        <router-link to='/'>
-            <Icon type="home" size="60" :color="home?'#2D8CF0':'#666'"></Icon>
-        </router-link>
-        </Col>
-        <Col span="12">
-        <router-link to="/my">
-            <Icon type="person" size="60" :color="my?'#2D8CF0':'#666'"></Icon>
-        </router-link>
-        </Col>
-    </Row>
+    <div class='nav-box'>
+        <Row>
+            <Col span="12">
+            <router-link to='/' class='nav-item'>
+                <Icon type="home" size="60" :color="home?'#2D8CF0':'#666'"></Icon>
+            </router-link>
+            </Col>
+            <Col span="12">
+            <router-link to="/my" class='nav-item'>
+                <Icon type="person" size="60" :color="my?'#2D8CF0':'#666'"></Icon>
+            </router-link>
+            </Col>
+        </Row>
+    </div>
 </template>
 <script>
 export default {
@@ -31,8 +33,10 @@ export default {
     bottom: 0;
     width: 100%;
     background: #fff;
-    >div{
+    .nav-item {
+        display: inline-block;
         text-align: center;
+        width: 100%;
     }
 }
 </style>

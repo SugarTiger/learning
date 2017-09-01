@@ -6,10 +6,14 @@
             <span class='my-name'>SugarTiger</span>
         </div>
         <div class='my-detail'>
-            github：<a href='https://github.com/SugarTiger'>https://github.com/SugarTiger</a><br><br>
-            email：1029109173@qq.com<br><br>
-            qq：1029109173<br><br>
-            blog：<a href='http://www.cnblogs.com/afeihome/'>http://www.cnblogs.com/afeihome/</a>
+            <Icon type="social-github" size='17'></Icon>
+            <a href='https://github.com/SugarTiger'>https://github.com/SugarTiger</a><br><br>
+            <Icon type="ios-email" size='17'></Icon>
+            1029109173@qq.com<br><br>
+            <Icon type="android-contacts" size='17'></Icon>
+            1029109173<br><br>
+            <Icon type="social-wordpress" size='17'></Icon>
+            <a href='http://www.cnblogs.com/afeihome/'>http://www.cnblogs.com/afeihome/</a>
         </div>
     </div>
 </template>
@@ -57,5 +61,8 @@ export default {
     }
     .my-detail{
             margin:10px 10px;
+            >a{
+                line-height: 20px;  
+            }
         }
 </style>
