@@ -3,7 +3,7 @@ import Timeago from 'timeago.js'
 const timeago = new Timeago()
 
 export default {
-    tabToLable (tab, top, good) {
+    tabToLabel (tab, top, good) {
         if (top) {
             return '置顶'
         }
