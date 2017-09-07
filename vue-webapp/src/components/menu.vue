@@ -24,10 +24,10 @@
         <div class="about">
             <router-link class="link icon-info" :to="{'name': 'about'}">关于</router-link>
         </div>
-        <dev class="msg" v-if="user.loginname">
+        <div class="msg" v-if="user.loginname">
             <router-link class="link icon-envelope" :to="{'name': 'message'}">消息</router-link>
-            <span v-if='megcount'>{{msgcount}}</span>
-        </dev>
+            <span v-if='msgcount'>{{msgcount}}</span>
+        </div>
     </div>
 </template>
 
@@ -50,8 +50,7 @@
             this.user = bus.user
             if (this.user.loginname) {
                 this.axios.get(`https://www.vue-js.com/api/v1/message/count?accesstoken=${this.user.accesstoken}`).then((res) => {
-                    console.log(res)
-                    this.msgcount = res.body.data
+                    this.msgcount = res.data.data
                 }).catch((erroe) => {
                     bus.$emit('alert', '获取信息失败')
                 })
