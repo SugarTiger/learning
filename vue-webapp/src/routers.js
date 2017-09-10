@@ -30,6 +30,16 @@ const routers = [
         component: require('./views/topic')
     },
     {
+        path: '/publish',
+        name: 'publish',
+        component: require('./views/publish.vue')
+    },
+    {
+        path: '/user/:id',
+        name: 'user',
+        component: require('./views/user.vue')
+    },
+    {
         path: '*',
         component: require('./views/home')
     }

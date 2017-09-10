@@ -18,7 +18,7 @@
                 if (!bus.user.accesstoken) {
                     bus.$emit('alert', '请先登录')
                 } else {
-                    this.$router.push({name: 'publich'})
+                    this.$router.push({name: 'publish'})
                 }
             }
         }
