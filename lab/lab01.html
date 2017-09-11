@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .but {
+            cursor: pointer;
+            width: 50px;
+            height: 25px;
+            outline: none;
+            border: none;
+            background-color: thistle;
+        }
+    </style>
+</head>
+
+<body>
+    <p>是这样的，页面上有一个按钮，一个ul，点击按钮的时候，每隔1秒钟向ul的后面追加一个li, 一共追加10个，li的内容从0开始计数( 0, 1, 2, ....9 )</p>
+    <button class="but">添加</button>
+    <ul class="uu">
+    </ul>
+    <script>
+        let create = (function () {
+            let count = 0;
+            return function () {
+                var uli = document.createElement('li');
+                uli.innerHTML = count++;
+                return uli;
+            }
+        })();
+        const but = document.querySelector('.but');
+        const uu = document.querySelector('.uu');
+        // but.onclick = function(){
+        //     for(let i= 1;i<11;i++){
+        //         setTimeout(function(){
+        //             uu.appendChild(create());
+        //         },i*1000);
+        //     }
+        // }
+
+
+        // 大神的方法，队列
+        var Utils = {
+            isFunction: function (a) {
+                return Object.prototype.toString.call(a) === '[object Function]';
+            },
+            isNumber: function (a) {
+                return typeof a === 'number';
+            }
+        };
+        var Queue = function () {
+            this.list = [];
+        }
+        Queue.prototype = {
+            constructor: Queue,
+            enQueue: function (fn) {
+                this.list.push(fn);
+                return this;
+            },
+            delay: function (time) {
+                this.list.push(time);
+                return this;
+            },
+            deQueue: function () {
+                var _this = this;
+                var cur = this.list.shift() || function () {};
+                if (Utils.isFunction(cur)) {
+                    cur.apply(this, arguments);
+                    if (this.list.length) this.deQueue();
+                } else if (Utils.isNumber(cur)) {
+                    setTimeout(function () {
+                        _this.deQueue();
+                    }, cur);
+                }
+            }
+        };
+        but.onclick = function () {
+            var oQ = new Queue();
+
+            function add() {
+                for (let i = 0; i < 10; i++) {
+                    oQ.enQueue(function () {
+                        uu.appendChild(create())
+                    }).delay(1000)
+                }
+            }
+            add();
+            oQ.deQueue();
+        }
+    </script>
+</body>
+
+</html>
