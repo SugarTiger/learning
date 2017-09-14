@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import axios from 'axios'
 import filters from './filters'
 import routes from './routers'
+import store from './store'
 import './common/css/markdown.css'
 import './common/css/reset.css'
 import './common/stylus/index.styl'
@@ -23,11 +24,19 @@ const router = new VueRouter({
 new Vue({
     data () {
         return {
-            alertshow: false
         }
     },
+    mounted () {
+        this.$store.commit('userInit')
+    },
     router,
+    store,
     components: {
         vAlert: require('./components/alert')
+    },
+    computed: {
+        alertshow () {
+            return this.$store.state.alertshow
+        }
     }
 }).$mount('#app')

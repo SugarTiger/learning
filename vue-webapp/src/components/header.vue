@@ -7,22 +7,21 @@
 </template>
 
 <script type="text/ecmascript-6">
-    import bus from '../store'
-    export default {
-        props: ['theme', 'left'],
-        methods: {
-            menuShow () {
-                this.$emit('menuShow')
-            },
-            release () {
-                if (!bus.user.accesstoken) {
-                    bus.$emit('alert', '请先登录')
-                } else {
-                    this.$router.push({name: 'publish'})
-                }
+export default {
+    props: ['theme', 'left'],
+    methods: {
+        menuShow () {
+            this.$emit('menuShow')
+        },
+        release () {
+            if (!this.$store.state.user.accesstoken) {
+                this.$store.commit('alert', '请先登录啦啦啦')
+            } else {
+                this.$router.push({ name: 'publish' })
             }
         }
     }
+}
 
 </script>
 
@@ -47,7 +46,7 @@
         img
             position absolute
             left 0
-            top 0 
+            top 0
             width 19px
             height 16px
             padding 14px 15px

@@ -56,7 +56,6 @@
     import vHeader from '../components/header.vue'
     import vMenu from '../components/menu'
     import vMask from '../components/mask'
-    import bus from '../store'
     import $ from 'webpack-zepto'
     export default {
         data () {
@@ -80,8 +79,8 @@
             vMask
         },
         mounted () {
-            if (bus.user.accesstoken) {
-                this.accesstoken = bus.user.accesstoken
+            if (this.$store.state.user.accesstoken) {
+                this.accesstoken = this.$store.state.user.accesstoken
             }
             let topicId = this.$route.params.id
             this.axios.get(`https://www.vue-js.com/api/v1/topic/${topicId}`).then((res) => {
@@ -103,7 +102,7 @@
                     if (!reply.ups.length) {
                         this.upList.push(false)
                     } else {
-                        if (reply.ups.includes(bus.user.id)) {
+                        if (reply.ups.includes(this.$store.state.user.id)) {
                             this.upList.push(true)
                         } else {
                             this.upList.push(false)
@@ -111,7 +110,7 @@
                     }
                 })
             }).catch(() => {
-                bus.$emit('alert', '获取信息失败')
+                this.$store.commit('alert', '获取信息失败')
             })
         },
         methods: {
@@ -125,12 +124,12 @@
                 return tab
             },
             up (index) {
-                if (!bus.user.accesstoken) {
-                    bus.$emit('alert', '请先登录')
+                if (!this.$store.state.user.accesstoken) {
+                    this.$store.commit('alert', '请先登录')
                     return
                 }
 
-                this.axios.post(`https://www.vue-js.com/api/v1/reply/${this.replies[index].id}/ups`, {accesstoken: bus.user.accesstoken}).then((res) => {
+                this.axios.post(`https://www.vue-js.com/api/v1/reply/${this.replies[index].id}/ups`, {accesstoken: this.$store.state.user.accesstoken}).then((res) => {
                     res = res.data
                     let num = Number($('.icon-thumb-up').eq(index).html())
                     if (res.action === 'up') {
@@ -141,12 +140,12 @@
                         this.upList.splice(index, 1, false)
                     }
                 }).catch(() => {
-                    bus.$emit('alert', '点赞失败')
+                    this.$store.commit('alert', '点赞失败')
                 })
             },
             showreplybox (index, name) {
-                if (!bus.user.accesstoken) {
-                    bus.$emit('alert', '请先登录')
+                if (!this.$store.state.user.accesstoken) {
+                    this.$store.commit('alert', '请先登录')
                     return
                 }
                 this.replybox.splice(index, 1, true)
@@ -157,16 +156,16 @@
             submitreply (ev, id) {
                 let content = $(ev.target).siblings('textarea').val()
                 if (id) {
-                    this.axios.post(`https://www.vue-js.com/api/v1/topic/${this.topic.id}/replies`, {accesstoken: bus.user.accesstoken, content: content, reply_id: id}).then((res) => {
+                    this.axios.post(`https://www.vue-js.com/api/v1/topic/${this.topic.id}/replies`, {accesstoken: this.$store.state.user.accesstoken, content: content, reply_id: id}).then((res) => {
                         window.location.reload()
                     }).catch(() => {
-                        bus.$emit('alert', '回复失败')
+                        this.$store.commit('alert', '回复失败')
                     })
                 } else {
-                    this.axios.post(`https://www.vue-js.com/api/v1/topic/${this.topic.id}/replies`, {accesstoken: bus.user.accesstoken, content: content}).then((res) => {
+                    this.axios.post(`https://www.vue-js.com/api/v1/topic/${this.topic.id}/replies`, {accesstoken: this.$store.state.user.accesstoken, content: content}).then((res) => {
                         window.location.reload()
                     }).catch(() => {
-                        bus.$emit('alert', '回复失败')
+                        this.$store.commit('alert', '回复失败')
                     })
                 }
             }
@@ -177,9 +176,9 @@
 
 <style lang="stylus">
 .topic
-    height: 100% 
+    height: 100%
     &.noscroll
-        overflow: hidden 
+        overflow: hidden
     .page
         padding-top: 44px
         .title
@@ -191,19 +190,19 @@
             line-height: 1.5
             background-color: #f0f0f0
             border-radius: 5px
-        .infoWrapper 
+        .infoWrapper
             display: flex
             padding: 0 15px
             height: 50px
-            img 
-                display: block 
+            img
+                display: block
                 width: 45px
                 height: 45px
                 margin-right: 15px
                 border-radius: 50%
             .info
                 flex: 1
-                p 
+                p
                     height: 24px
                     .authorname, .createat
                         float: left
@@ -228,12 +227,12 @@
                             background: #3498DB
                         &.gob
                             background: #9B59B6
-        
+
         .content
             padding: 15px
             border-bottom: solid 1px #d4d4d4
-        
-        
+
+
         .reply
             .replycount
                 padding: 15px
@@ -241,7 +240,7 @@
                 line-height: 24px
                 font-weight: 700
                 border-bottom: solid 1px #d4d4d4
-                strong 
+                strong
                     color: #42b983
                     font-weight: 700
             .replyitem
@@ -250,38 +249,38 @@
                 .replyitemhead
                     display: flex
                     height: 48px
-                    img 
-                        display: block 
+                    img
+                        display: block
                         width: 45px
                         height: 45px
                         margin-right: 15px
                         border-radius: 8px
-                    div 
+                    div
                         flex: 1
-                        p 
+                        p
                             line-height: 24px
                             &:nth-child(2)
                                 font-size: 16px
                                 text-align: right
-                                span 
+                                span
                                     margin-left: 20px
-                            .uped 
+                            .uped
                                 color: #4fc08d
                 .replyitembody
-                    padding: 15px 0    
+                    padding: 15px 0
             .replybox
                 margin: 15px
-                textarea 
-                    display: block 
+                textarea
+                    display: block
                     box-sizing: border-box
                     padding: 15px
-                    width: 100% 
-                    font-size: 14px 
+                    width: 100%
+                    font-size: 14px
                     resize: none
-                a 
-                    display: block 
+                a
+                    display: block
                     margin-top: 10px
-                    width: 100% 
+                    width: 100%
                     line-height: 42px
                     font-size: 16px
                     text-align: center

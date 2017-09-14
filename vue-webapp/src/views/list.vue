@@ -1,7 +1,7 @@
 <template>
     <div class="topics" :class="{noscroll: showMenu}">
         <v-header :left="showMenu ? '200px' : 0" :theme="theme" @menuShow="showMenu = true"></v-header>
-        <v-menu :left="showMenu ? 0 : '-200px'" @menuHidden="showMenu = false"></v-menu> 
+        <v-menu :left="showMenu ? 0 : '-200px'" @menuHidden="showMenu = false"></v-menu>
         <v-mask v-show="showMenu" @menuHidden="showMenu=false"></v-mask>
         <div class="page">
             <ul>
@@ -36,7 +36,6 @@ import vHeader from '../components/header.vue'
 import vMenu from '../components/menu.vue'
 import vMask from '../components/mask.vue'
 import $ from 'webpack-zepto'
-import bus from '../store'
 
 export default {
     data () {
@@ -128,7 +127,7 @@ export default {
                 })
                 this.scroll = true
             }).catch(() => {
-                bus.$emit('alert', '获取列表失败，请重试')
+                this.$store.commit('alert', '获取列表失败，请重试')
             })
         }
     },
@@ -168,15 +167,15 @@ export default {
 </script>
 <style lang='stylus'>
     .topics
-        height: 100% 
+        height: 100%
         &.noscroll
-            overflow: hidden 
-        .page 
+            overflow: hidden
+        .page
             padding-top: 44px
             .topic
-                padding: 10px 15px 
+                padding: 10px 15px
                 border-bottom: 1px solid #d5dbdb
-                .titleWrap 
+                .titleWrap
                     display: flex
                     .label
                         padding: 6px
@@ -213,17 +212,17 @@ export default {
                         border-radius: 50%
                     .info
                         flex: 1
-                        height: 38px 
+                        height: 38px
                         font-size: 14px
-                        line-height: 19px 
-                        p 
+                        line-height: 19px
+                        p
                             height: 19px
                         .loginname
                         .createat
                             float: left
                         .replycount
                             float: right
-                            strong 
+                            strong
                                 font-weight: 600
                                 color: #42b983
                         .replyat

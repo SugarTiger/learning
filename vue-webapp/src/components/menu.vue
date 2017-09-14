@@ -19,7 +19,7 @@
             <router-link class="link icon-fire" :to="{'name': 'list', query: {tab: 'good'}}" @click.native="menuHidden">精华</router-link>
             <router-link class="link icon-share2" :to="{'name':'list',query:{tab:'share'}}" @click.native="menuHidden">分享</router-link>
             <router-link class="link icon-bubbles" :to="{'name':'list',query:{tab:'ask'}}" @click.native="menuHidden">问答</router-link>
-            <router-link class="link icon-user-tie" :to="{'name':'list',query:{tab:'job'}}" @click.native="menuHidden">招聘</router-link>   
+            <router-link class="link icon-user-tie" :to="{'name':'list',query:{tab:'job'}}" @click.native="menuHidden">招聘</router-link>
         </div>
         <div class="about">
             <router-link class="link icon-info" :to="{'name': 'about'}">关于</router-link>
@@ -32,7 +32,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-    import bus from '../store'
     export default {
         props: ['left'],
         data () {
@@ -47,12 +46,13 @@
             }
         },
         mounted () {
-            this.user = bus.user
+            this.$store.commit('userInit')
+            this.user = this.$store.state.user
             if (this.user.loginname) {
                 this.axios.get(`https://www.vue-js.com/api/v1/message/count?accesstoken=${this.user.accesstoken}`).then((res) => {
                     this.msgcount = res.data.data
                 }).catch((erroe) => {
-                    bus.$emit('alert', '获取信息失败')
+                    this.$store.commit('alert', '获取信息失败')
                 })
             }
         }
@@ -77,14 +77,14 @@
         display: block
         line-height: 24px
         text-align: center
-        img 
+        img
             margin-right: 10px
             display: inline-block
             width: 24px
             height: 24px
             vertical-align: top
             border-radius: 4px
-        .go 
+        .go
             float: right
             margin-top: 4px
             width: 10px
@@ -102,13 +102,13 @@
             line-height: 40px
             text-align: center
             color: #313131
-    .msg 
+    .msg
         position: relative
         span
             position: absolute
-            right: 20px 
+            right: 20px
             top: 15px
-            display: block 
+            display: block
             width: 14px
             height: 14px
             line-height: 14px

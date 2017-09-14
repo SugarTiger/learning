@@ -17,7 +17,6 @@
     import vMenu from '../components/menu.vue'
     import vMask from '../components/mask.vue'
     import $ from 'webpack-zepto'
-    import bus from '../store'
     export default {
         data () {
             return {
@@ -34,14 +33,13 @@
         mounted () {
             $('.loginBtn').on('click', () => {
                 this.axios.post('https://www.vue-js.com/api/v1/accesstoken', {accesstoken: this.access}).then((res) => {
-                    bus.user = res.data
-                    bus.user.accesstoken = this.access
-                    window.sessionStorage.user = JSON.stringify(bus.user)
+                    res.data.accesstoken = this.access
+                    this.$store.commit('login', res.data)
                     this.$router.push({
                         name: 'list'
                     })
                 }).catch(() => {
-                    bus.$emit('alert', '登录失败')
+                    this.$store.commit('alert', '登录失败')
                 })
             })
         }
@@ -52,23 +50,23 @@
 <style lang="stylus">
     .login
         .loginWrap
-            padding-top: 44px        
-            div 
+            padding-top: 44px
+            div
                 margin-top: 50px
                 padding: 40px
-                input 
+                input
                     display: block
                     width: 100%
                     line-height: 24px
                     font-size: 16px
                     text-indent: 10px
                     outline: none
-                    border: none 
+                    border: none
                     border-bottom: 1px solid #4fc08d
-                a 
-                    display: block 
+                a
+                    display: block
                     margin-top: 10px
-                    width: 100% 
+                    width: 100%
                     line-height: 42px
                     font-size: 16px
                     text-align: center

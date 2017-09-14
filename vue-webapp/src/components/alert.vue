@@ -4,26 +4,10 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-    import bus from '../store'
-
     export default {
-        data () {
-            return {
-                msg: ''
-            }
-        },
-        mounted () {
-            bus.$on('alert', (msg) => {
-                this.msg = msg
-                this.alert()
-            })
-        },
-        methods: {
-            alert () {
-                this.$emit('alertshow')
-                setTimeout(() => {
-                    this.$emit('alerthidden')
-                }, 2000)
+        computed: {
+            msg () {
+                return this.$store.state.msg
             }
         }
     }

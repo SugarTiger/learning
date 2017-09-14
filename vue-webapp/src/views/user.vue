@@ -29,7 +29,6 @@
     import vHeader from '../components/header.vue'
     import vMask from '../components/mask.vue'
     import vMenu from '../components/menu.vue'
-    import bus from '../store'
     export default {
         data () {
             return {
@@ -52,8 +51,8 @@
             }
         },
         mounted () {
-            if (bus.user.accesstoken) {
-                this.accesstoken = bus.user.accesstoken
+            if (this.$store.state.user.accesstoken) {
+                this.accesstoken = this.$store.state.user.accesstoken
             }
             this.fetchmsg()
         },
@@ -68,12 +67,11 @@
                 this.axios.get(`https://www.vue-js.com/api/v1/user/${loginname}`).then((res) => {
                     this.info = res.data.data
                 }).catch(() => {
-                    bus.$emit('alert', '获取个人信息失败')
+                    this.$store.commit('alert', '获取个人信息失败')
                 })
             },
             loginout () {
-                bus.user = {}
-                window.sessionStorage.removeItem('user')
+                this.$store.commit('logout')
                 this.$router.push({name: 'list'})
             }
         }
@@ -85,22 +83,22 @@
 .user
     padding-top: 44px
     .info
-        padding: 15px 0 
+        padding: 15px 0
         background: #e7e7e7
-        img 
-            display: block 
+        img
+            display: block
             width: 100px
             height: 100px
             margin: 0 auto
             border-radius: 50%
-        p 
+        p
             line-height: 20px
             text-align: center
             font-size: 12px
             color: #333
     .msghead
         height: 40px
-        p 
+        p
             float: left
             box-sizing: border-box
             height: 40px
@@ -119,10 +117,10 @@
         .msg
             padding: 10px
             border-bottom: 1px solid #d5dbdb
-            p 
+            p
                 white-space: nowrap
                 text-overflow: ellipsis
-                overflow: hidden                
+                overflow: hidden
                 &.title
                     height: 30px
                     line-height: 30px
@@ -134,13 +132,13 @@
                     line-height: 20px
                     font-size: 10px
                     text-align: right
-                strong 
+                strong
                     color: #42b983
     .loginout
         position: fixed
         left: 0
         bottom: 0
-        width: 100% 
+        width: 100%
         font-size: 20px
         font-weight: 600
         line-height: 40px

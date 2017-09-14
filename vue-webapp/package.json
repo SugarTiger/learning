@@ -15,6 +15,7 @@
     "timeago.js": "^3.0.0",
     "vue": "^2.4.2",
     "vue-router": "^2.2.0",
+    "vuex": "^2.4.0",
     "webpack-zepto": "0.0.1"
   },
   "devDependencies": {

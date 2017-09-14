@@ -29,7 +29,6 @@
     import vHeader from '../components/header.vue'
     import vMenu from '../components/menu.vue'
     import vMask from '../components/mask.vue'
-    import bus from '../store'
     export default {
         data () {
             return {
@@ -48,13 +47,13 @@
         methods: {
             publish () {
                 if (this.title.length < 10 || this.title.length > 100) {
-                    bus.$emit('alert', '请注意标题字数')
+                    this.$store.commit('alert', '请注意标题字数')
                     return
                 }
-                this.axios.post('http://www.vue-js.com/api/v1/topics', { accesstoken: bus.user.accesstoken, title: this.title, tab: this.category, content: this.content }).then((res) => {
+                this.axios.post('http://www.vue-js.com/api/v1/topics', { accesstoken: this.$store.state.user.accesstoken, title: this.title, tab: this.category, content: this.content }).then((res) => {
                     this.$route.push({name: 'list'})
                 }).catch(() => {
-                    bus.$emit('alert', '发布失败')
+                    this.$store.commit('alert', '发布失败')
                 })
             }
         }
@@ -62,35 +61,35 @@
 
 </script>
 <style lang="stylus">
-.publish 
+.publish
     padding-top: 44px
     .publishwrap
         .category
             padding: 15px
             height: 30px
             font-size: 0
-            span 
+            span
                 display: inline-block
                 width: 30%
                 line-height: 30px
                 font-size: 12px
                 text-align: center
-            select 
+            select
                 display: inline-block
-                width: 40% 
+                width: 40%
                 height: 20px
-                margin-top: 5px 
+                margin-top: 5px
                 vertical-align: top
             .btnwrap
                 display: inline-block
-                width: 30% 
+                width: 30%
                 height: 30px
                 line-height: 30px
                 vertical-align: top
-                text-align: center     
-                button 
-                    width: 60% 
-                    height: 24px 
+                text-align: center
+                button
+                    width: 60%
+                    height: 24px
                     line-height: 24px
                     margin-top: 3px
                     vertical-align: top
@@ -103,8 +102,8 @@
             padding: 10px
             border-top: 1px solid #d4d4d4
             border-bottom: 1px solid #d4d4d4
-            input 
-                width: 100% 
+            input
+                width: 100%
                 line-height: 30px
                 fint-size: 18px
                 border: none
@@ -113,7 +112,7 @@
             margin: 15px
             padding: 15px
             border: 1px solid #d4d4d4
-            textarea 
+            textarea
                 width: 100%
                 border: none
                 resize: none
