@@ -29,6 +29,7 @@
     import vHeader from '../components/header.vue'
     import vMask from '../components/mask.vue'
     import vMenu from '../components/menu.vue'
+    import store from '../store'
     export default {
         data () {
             return {
@@ -73,6 +74,13 @@
             loginout () {
                 this.$store.commit('logout')
                 this.$router.push({name: 'list'})
+            }
+        },
+        beforeRouteEnter (to, from, next) {
+            if (!store.state.user.accesstoken) {
+                next({ name: 'login' })
+            } else {
+                next()
             }
         }
     }

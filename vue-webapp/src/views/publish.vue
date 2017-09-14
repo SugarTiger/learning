@@ -29,6 +29,7 @@
     import vHeader from '../components/header.vue'
     import vMenu from '../components/menu.vue'
     import vMask from '../components/mask.vue'
+    import store from '../store'
     export default {
         data () {
             return {
@@ -55,6 +56,13 @@
                 }).catch(() => {
                     this.$store.commit('alert', '发布失败')
                 })
+            }
+        },
+        beforeRouteEnter (to, from, next) {
+            if (!store.state.user.accesstoken) {
+                next({ name: 'login' })
+            } else {
+                next()
             }
         }
     }
