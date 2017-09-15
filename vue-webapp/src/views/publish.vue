@@ -51,7 +51,7 @@
                     this.$store.commit('alert', '请注意标题字数')
                     return
                 }
-                this.axios.post('http://www.vue-js.com/api/v1/topics', { accesstoken: this.$store.state.user.accesstoken, title: this.title, tab: this.category, content: this.content }).then((res) => {
+                this.axios.post('https://www.vue-js.com/api/v1/topics', { accesstoken: this.$store.state.user.accesstoken, title: this.title, tab: this.category, content: this.content }).then((res) => {
                     this.$route.push({name: 'list'})
                 }).catch(() => {
                     this.$store.commit('alert', '发布失败')

@@ -132,10 +132,13 @@
                 this.axios.post(`https://www.vue-js.com/api/v1/reply/${this.replies[index].id}/ups`, {accesstoken: this.$store.state.user.accesstoken}).then((res) => {
                     res = res.data
                     let num = Number($('.icon-thumb-up').eq(index).html())
+                    if (res.error_msg !== undefined) {
+                        throw new Error('错误')
+                    }
                     if (res.action === 'up') {
                         $('.icon-thumb-up').eq(index).html(num + 1)
                         this.upList.splice(index, 1, true)
-                    } else {
+                    } else if (res.action === 'down') {
                         $('.icon-thumb-up').eq(index).html(num - 1)
                         this.upList.splice(index, 1, false)
                     }
