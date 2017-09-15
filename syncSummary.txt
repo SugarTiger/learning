@@ -1,3 +1,5 @@
-GITHUB TOKEN: 7cb5d9cdc9c0415fde35025ca87f34bb9811f27b
-GITHUB GIST: 7531fc6c03ac41fdc15ecaadb3145739
+Sync : Upload Complete. GIST ID : 535b668a081acf1a5e25c68845dd09a3 . Please copy and use this ID in other machines to download settings.
+
+GITHUB TOKEN: 9c38cf69ecd5d46d226481ff131ffcdc3a4762d7
+GITHUB GIST: 535b668a081acf1a5e25c68845dd09a3
 GITHUB GIST TYPE: Secret
