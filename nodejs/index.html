@@ -13,13 +13,15 @@
     <script src="./public/axios.min.js"></script>
     <script>
         var person = {
-            name: 'afei',
+            name: 'afeiiii',
             age: 25
         }
         var but = document.getElementById('but');
         but.onclick = function () {
-            axios.post('http://127.0.0.1:3000/saveJSON', person).then(function (response) {
+            axios.post('/saveJSON', person).then(function (response) {
                 alert("Data: " + response.data + '\nStatus: ' + response.status)
+            }).catch(()=>{
+                console.log('出错')
             })
         }
     </script>
