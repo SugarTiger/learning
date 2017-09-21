@@ -28,12 +28,10 @@ var list = [{
     }
 ];
 for (var i = 0; i < list.length; i++) {
-    for (var j = 0; j < list.length; j++) {
-        if (i === j) continue;
+    for (var j = i+1; j < list.length; j++) {
         if (list[i].checkline === list[j].checkline) {
             list[i].completenum =   parseInt(list[i].completenum) + parseInt(list[j].completenum);
             list.splice(j, 1)
         }
     }
 }
-console.log(list)
