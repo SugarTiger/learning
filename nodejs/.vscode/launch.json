@@ -7,6 +7,18 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "bigDemo",
+            "program": "${workspaceFolder}/bigDemo/v1.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "catch.js",
+            "program": "${workspaceFolder}/async/catch.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "child",
             "program": "${workspaceFolder}/util/child.js"
         },

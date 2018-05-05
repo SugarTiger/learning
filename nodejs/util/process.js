@@ -1,3 +1,2 @@
 
-console.log(process.env['SUDO_UID'])
-console.log(process.env['SUDO_GID'])
+console.log('我是子进程')
