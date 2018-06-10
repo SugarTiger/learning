@@ -1,0 +1,44 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "bigDemo",
+            "program": "${workspaceFolder}/bigDemo/v1.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "catch.js",
+            "program": "${workspaceFolder}/async/catch.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "child",
+            "program": "${workspaceFolder}/util/child.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "travel",
+            "program": "${workspaceFolder}/fs/travel.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "copy",
+            "program": "${workspaceFolder}/fs/copy.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "demo3/main",
+            "program": "${workspaceFolder}/demo3/main.js"
+        }
+    ]
+}

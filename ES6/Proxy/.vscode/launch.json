@@ -1,0 +1,56 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Observer",
+            "program": "${workspaceFolder}/Observer.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "demo07",
+            "program": "${workspaceFolder}/demo07.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "demo06",
+            "program": "${workspaceFolder}/demo06.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "demo05",
+            "program": "${workspaceFolder}/demo05.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "demo04",
+            "program": "${workspaceFolder}/demo04.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "demo03",
+            "program": "${workspaceFolder}/demo03.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "demo01",
+            "program": "${workspaceFolder}/demo01.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "demo02",
+            "program": "${workspaceFolder}/demo02.js"
+        },
+    ]
+}

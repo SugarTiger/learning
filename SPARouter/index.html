@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SPARouter</title>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <a href="#/red">红</a>
+        </li>
+        <li>
+            <a href="#/yellow">黄</a>
+        </li>
+        <li>
+            <a href="#/blue">蓝</a>
+        </li>
+    </ul>
+    <button id="back">后退</button>
+    <button id="goAhead">前进</button>
+    <script src="./SPARouter.js"></script>
+    <script>
+        var rrr = new SPARouter({
+            '/': function () {
+                document.title = "首页";
+                document.body.style.backgroundColor = "#fff"
+            }
+        });
+        rrr.setRouter('/red', function () {
+            document.title = "红色";
+            document.body.style.backgroundColor = "red"
+        })
+        rrr.setRouter('/yellow', function () {
+            document.title = "黄色";
+            document.body.style.backgroundColor = "yellow"
+        })
+        rrr.setRouter('/blue', function () {
+            document.title = "蓝色";
+            document.body.style.backgroundColor = "blue"
+        });
+        document.getElementById('back').addEventListener('click', function(){
+            rrr.back();
+        })
+        document.getElementById('goAhead').addEventListener('click', function(){
+            rrr.goAhead();
+        })
+    </script>
+</body>
+
+</html>
