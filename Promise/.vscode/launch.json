@@ -1,0 +1,70 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "ajax",
+            "url": "http://localhost:8080/index.html",
+            "sourceMaps": true,
+            "webRoot": "${workspaceFolder}/ajax"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "lab01",
+            "program": "${workspaceFolder}/lab01.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "lab02",
+            "program": "${workspaceFolder}/lab02.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "lab03",
+            "program": "${workspaceFolder}/lab03.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "catch",
+            "program": "${workspaceFolder}/catch.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "error",
+            "program": "${workspaceFolder}/error.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "finally",
+            "program": "${workspaceFolder}/finally.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "all",
+            "program": "${workspaceFolder}/all.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "resolve",
+            "program": "${workspaceFolder}/resolve.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "try",
+            "program": "${workspaceFolder}/try.js"
+        },
+    ]
+}
