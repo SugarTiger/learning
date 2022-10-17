@@ -1,0 +1,14 @@
+{
+  "name": "objecttocanvas",
+  "version": "1.0.0",
+  "description": "Generate a canvas based on the configuration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "canvas"
+  ],
+  "author": "SugarTiger",
+  "license": "ISC"
+}

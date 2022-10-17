@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>scroll</title>
+    <style>
+      .result {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        color: #fff;
+      }
+      .s_b {
+        margin-top: 1000px;
+        border: 1px solid #e5e5e5;
+        width: 200px;
+        height: 200px;
+        overflow: auto;
+        position: relative;
+      }
+      .k {
+        width: 50px;
+        height: 50px;
+        top: 1000px;
+        left: 0;
+        position: absolute;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="(src,index) in list" :key="index">
+          <img ref="lazy_img" :data-src="src" />
+        </li>
+      </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          list: [
+            "https://www.abc.com/images/001.jpg",
+            "https://www.abc.com/images/002.jpg",
+            "https://www.abc.com/images/003.jpg",
+            "https://www.abc.com/images/004.jpg",
+            "https://www.abc.com/images/005.jpg",
+            "https://www.abc.com/images/006.jpg",
+            "https://www.abc.com/images/007.jpg",
+            "https://www.abc.com/images/008.jpg",
+            "https://www.abc.com/images/009.jpg",
+            "https://www.abc.com/images/010.jpg",
+            "https://www.abc.com/images/011.jpg",
+            "https://www.abc.com/images/012.jpg",
+            "https://www.abc.com/images/013.jpg",
+            "https://www.abc.com/images/014.jpg",
+            "https://www.abc.com/images/015.jpg",
+            "https://www.abc.com/images/016.jpg",
+            "https://www.abc.com/images/017.jpg",
+            "https://www.abc.com/images/018.jpg",
+            "https://www.abc.com/images/019.jpg",
+            "https://www.abc.com/images/020.jpg",
+            "https://www.abc.com/images/021.jpg",
+            "https://www.abc.com/images/022.jpg",
+            "https://www.abc.com/images/023.jpg",
+            "https://www.abc.com/images/024.jpg",
+            "https://www.abc.com/images/025.jpg",
+            "https://www.abc.com/images/026.jpg",
+            "https://www.abc.com/images/027.jpg",
+            "https://www.abc.com/images/028.jpg",
+            "https://www.abc.com/images/029.jpg",
+            "https://www.abc.com/images/030.jpg",
+            "https://www.abc.com/images/031.jpg",
+            "https://www.abc.com/images/032.jpg",
+            "https://www.abc.com/images/033.jpg",
+            "https://www.abc.com/images/034.jpg",
+            "https://www.abc.com/images/035.jpg",
+            "https://www.abc.com/images/036.jpg",
+            "https://www.abc.com/images/037.jpg",
+            "https://www.abc.com/images/038.jpg",
+            "https://www.abc.com/images/039.jpg",
+            "https://www.abc.com/images/040.jpg",
+            "https://www.abc.com/images/041.jpg",
+            "https://www.abc.com/images/042.jpg",
+            "https://www.abc.com/images/043.jpg",
+            "https://www.abc.com/images/044.jpg",
+            "https://www.abc.com/images/045.jpg",
+            "https://www.abc.com/images/046.jpg",
+            "https://www.abc.com/images/047.jpg",
+            "https://www.abc.com/images/048.jpg",
+            "https://www.abc.com/images/049.jpg",
+            "https://www.abc.com/images/050.jpg",
+            "https://www.abc.com/images/051.jpg",
+            "https://www.abc.com/images/052.jpg",
+            "https://www.abc.com/images/053.jpg",
+            "https://www.abc.com/images/054.jpg",
+            "https://www.abc.com/images/055.jpg",
+            "https://www.abc.com/images/056.jpg",
+            "https://www.abc.com/images/057.jpg",
+            "https://www.abc.com/images/058.jpg",
+            "https://www.abc.com/images/059.jpg",
+            "https://www.abc.com/images/060.jpg",
+            "https://www.abc.com/images/061.jpg",
+            "https://www.abc.com/images/062.jpg",
+            "https://www.abc.com/images/063.jpg",
+            "https://www.abc.com/images/064.jpg",
+            "https://www.abc.com/images/065.jpg",
+            "https://www.abc.com/images/066.jpg",
+            "https://www.abc.com/images/067.jpg",
+            "https://www.abc.com/images/068.jpg",
+            "https://www.abc.com/images/069.jpg",
+            "https://www.abc.com/images/070.jpg",
+            "https://www.abc.com/images/071.jpg",
+            "https://www.abc.com/images/072.jpg",
+            "https://www.abc.com/images/073.jpg",
+            "https://www.abc.com/images/074.jpg",
+            "https://www.abc.com/images/075.jpg",
+            "https://www.abc.com/images/076.jpg",
+            "https://www.abc.com/images/077.jpg",
+            "https://www.abc.com/images/078.jpg",
+            "https://www.abc.com/images/079.jpg",
+            "https://www.abc.com/images/080.jpg",
+            "https://www.abc.com/images/081.jpg",
+            "https://www.abc.com/images/082.jpg",
+            "https://www.abc.com/images/083.jpg",
+            "https://www.abc.com/images/084.jpg",
+            "https://www.abc.com/images/085.jpg",
+            "https://www.abc.com/images/086.jpg",
+            "https://www.abc.com/images/087.jpg",
+            "https://www.abc.com/images/088.jpg",
+            "https://www.abc.com/images/089.jpg",
+            "https://www.abc.com/images/090.jpg",
+            "https://www.abc.com/images/091.jpg",
+            "https://www.abc.com/images/092.jpg",
+            "https://www.abc.com/images/093.jpg",
+            "https://www.abc.com/images/094.jpg",
+            "https://www.abc.com/images/095.jpg",
+            "https://www.abc.com/images/096.jpg",
+            "https://www.abc.com/images/097.jpg",
+            "https://www.abc.com/images/098.jpg",
+            "https://www.abc.com/images/099.jpg",
+            "https://www.abc.com/images/100.jpg",
+          ],
+        },
+        mounted() {
+          var io = new IntersectionObserver((entries) => {
+            console.log("entries",entries)
+            entries.forEach(el=>{
+              if(el.intersectionRect.y){
+                el.target.setAttribute('src',el.target.dataset.src)
+                io.unobserve(el.target)
+              }
+            })
+          });
+          this.$refs.lazy_img.forEach(el=>{
+            io.observe(el);
+          })
+        },
+      });
+    </script>
+  </body>
+</html>
